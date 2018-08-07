@@ -15,8 +15,7 @@ import {
 
   import UserInfo from '../components/UserInfo';
   import Users from '../../seed';
-  import { addUser, setSearchText } from '../store/actions/userActions';
-  import configureStore from '../store/configStore';
+  import { addUser } from '../store/actions/userActions';
 
 class Home extends Component {
     constructor(props){
@@ -56,7 +55,6 @@ class Home extends Component {
 
     onTextChange(text) {
         let {users} = this.props;
-        // this.setState({searchText: text});
         if (text == '') {
             this.setState({
                 users,
@@ -64,7 +62,7 @@ class Home extends Component {
             })
         } else {
             var arr = [];
-            users.forEach((element, index) => {
+            users.forEach((element) => {
                 if (this.includesExpression(element.name, text) || this.includesExpression(element.address, text) || this.includesExpression(element.designation, text)) {
                     arr.push(element);
                 }
@@ -184,8 +182,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddUser: (user) => dispatch(addUser(user)),
-        onSetSearchText: (text) => dispatch(setSearchText(text))
+        onAddUser: (user) => dispatch(addUser(user))
     }
 }
 

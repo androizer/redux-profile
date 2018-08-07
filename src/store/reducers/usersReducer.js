@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
             {console.log("action",action);
                 return {
                 ...state,
-                users:action.users
+                users: action.users
             }}
         case SET_SEARCH_TEXT:
             return {
